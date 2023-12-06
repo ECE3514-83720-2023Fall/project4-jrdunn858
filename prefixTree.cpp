@@ -33,6 +33,13 @@ prefixTree::~prefixTree()
 
 
 bool prefixTree::add(const std::string netid, const int port) {
+	if (this->rootPtr == nullptr) {
+		rootPtr = std::make_shared<treeNode>(netid, port);
+		return true;
+	}
+	else {
+		
+	}
 	
 	return false;
 }
