@@ -5,8 +5,8 @@
 #include<memory>
 
 
-void main() {
-	/*prefixTree myTree("routing_table.txt");
+int main() {
+	prefixTree myTree("routing_table.txt");
 	
 	std::cout << "-------------Tree ----------------------\n\n";
 	std::cout << myTree.postorderTraverse(visitNode) << std::endl;
@@ -14,7 +14,8 @@ void main() {
 	
 
 	std::cout<<"end of the program \n";
-	std::cin.get();*/
+	std::cin.get();
 
+	return 0;
 }
 
