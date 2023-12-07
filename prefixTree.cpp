@@ -45,21 +45,10 @@ bool prefixTree::recursiveAdd(std::shared_ptr<treeNode> nodePtr, std::string net
 		return true;
 	}
 
-	if (nodePtr->getNetId() == "") {
-		if (netId[0] == '0') {
-			std::shared_ptr<treeNode> newNode = std::make_shared <treeNode>(netId, port);
-			nodePtr->setLeftChildPtr(newNode);
-			return true;
-		}
-		else {
-			std::shared_ptr<treeNode> newNode = std::make_shared <treeNode>(netId, port);
-			nodePtr->setRightChildPtr(newNode);
-			return true;
-		}
-	}
+	
 
 	// left side
-	if (netId[nodePtr->getNetId().length()] == '0') {
+	if (netId[nodePtr->getNetId().size()] == '0') {
 		if (nodePtr->getLeftChildPtr() == nullptr) {
 			std::shared_ptr<treeNode> newNode = std::make_shared <treeNode>(netId, port);
 			nodePtr->setLeftChildPtr(newNode);
@@ -69,7 +58,7 @@ bool prefixTree::recursiveAdd(std::shared_ptr<treeNode> nodePtr, std::string net
 	}
 
 	// right side
-	if (netId[nodePtr->getNetId().length()] == '1') {
+	else {
 		if (nodePtr->getRightChildPtr() == nullptr) {
 			std::shared_ptr<treeNode> newNode = std::make_shared <treeNode>(netId, port);
 			nodePtr->setRightChildPtr(newNode);
@@ -108,7 +97,16 @@ int prefixTree::findPort(std::string ipaddr) const
 
 bool prefixTree::remove(const std::string prefix)
 {
-	
+	if (prefix == "") {
+		delete &rootPtr;
+		return true;
+	}
+
+	else {
+		// to do
+
+		return true;
+	}
 	return false;
 }
 
