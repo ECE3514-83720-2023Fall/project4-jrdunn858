@@ -26,7 +26,7 @@ prefixTree::prefixTree(std::string filename) {
 
 }
 
-void prefixTree::destructorHelper(std::shared_ptr<treeNode>& nodePtr) {
+void prefixTree::destructorHelper(std::shared_ptr<treeNode> nodePtr) {
 	if (nodePtr != nullptr) {
 		destructorHelper(nodePtr->getLeftChildPtr());
 		destructorHelper(nodePtr->getRightChildPtr());

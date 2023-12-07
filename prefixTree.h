@@ -49,7 +49,7 @@ protected:
 
    std::shared_ptr<treeNode> findInsertion(std::string netId, std::shared_ptr<treeNode> &next);
 
-   void destructorHelper(std::shared_ptr<treeNode>& nodePtr);
+   void destructorHelper(std::shared_ptr<treeNode> nodePtr);
  
    
    std::string postorderTraverseHelper(std::string visit(std::shared_ptr<treeNode> NodePtr), std::shared_ptr<treeNode> treePtr) const;
