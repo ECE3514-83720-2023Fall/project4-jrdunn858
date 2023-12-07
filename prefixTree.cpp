@@ -7,7 +7,7 @@
 //
 
 #include "prefixTree.h"
-//#include "treeNode.h"
+#include "treeNode.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -95,6 +95,11 @@ bool prefixTree::add(const std::string netid, const int port) {
 		return true;
 	}
 
+	else {
+		rootPtr = newNode;
+		return true;
+	}
+
 	return false;
 }
 
@@ -115,7 +120,6 @@ bool prefixTree::remove(const std::string prefix)
 void prefixTree::clear()
 {
 	
-	return;
 }
 
 
