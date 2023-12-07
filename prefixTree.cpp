@@ -50,22 +50,27 @@ std::shared_ptr<treeNode> prefixTree::findInsertion(std::string netId, std::shar
 	std::size_t thisIdLength = nodePtr->getNetId().length();
 	std::size_t newIdLength = netId.length();
 	std::size_t leftIdLength = nodePtr->getLeftChildPtr()->getNetId().length();
-	std::size_t rightIdLength = nodePtr->getLeftChildPtr()->getNetId().length();
+	std::size_t rightIdLength = nodePtr->getRightChildPtr()->getNetId().length();
 
 	if (netId[thisIdLength] == '0') {
 		if (newIdLength < leftIdLength) {
 			return nodePtr;
 		}
-		else findInsertion(netId, nodePtr->getLeftChildPtr());
+		else {
+			return findInsertion(netId, nodePtr->getLeftChildPtr());
+		}
 	}
 
 	if (netId[thisIdLength] == '1') {
 		if (newIdLength < rightIdLength) {
 			return nodePtr;
 		}
-		else findInsertion(netId, nodePtr->getRightChildPtr());
+		else {
+			return findInsertion(netId, nodePtr->getRightChildPtr());
+		}
 	}
-	
+
+	return nullptr;
 }
 
 
