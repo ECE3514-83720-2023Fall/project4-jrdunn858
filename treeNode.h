@@ -1,4 +1,10 @@
-
+///////////////////////////////////////////////////////
+// ECE 3514, Project 4, Josh Dunn
+//
+// File name: treeNode.h
+// Description: This file defines the treeNode class and its member functions
+// Date: 12/6/2023
+//
 
 #ifndef TREE_NODE_
 #define TREE_NODE_
@@ -7,7 +13,7 @@
 #include <memory>
 
 struct RoutingEntry {
-	std::string  netId;       //network id    
+	std::string  netId;     //network id    
 	int port;  // port number 
 };
 

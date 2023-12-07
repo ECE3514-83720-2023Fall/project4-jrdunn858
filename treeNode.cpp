@@ -1,8 +1,12 @@
-
+///////////////////////////////////////////////////////
+// ECE 3514, Project 4, Josh Dunn
+//
+// File name: treeNode.cpp
+// Description: This file implements treeNode class member functions
+// Date: 12/6/2023
+//
 
 #include "treeNode.h"
-
-
 
 treeNode::treeNode() {
 	this->setLeftChildPtr(nullptr);

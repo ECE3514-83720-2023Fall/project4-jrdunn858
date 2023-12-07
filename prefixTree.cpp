@@ -1,4 +1,10 @@
-
+///////////////////////////////////////////////////////
+// ECE 3514, Project 4, Josh Dunn
+//
+// File name: prefixTree.cpp
+// Description: This file implements prefixTree class member functions
+// Date: 12/6/2023
+//
 
 #include "prefixTree.h"
 //#include "treeNode.h"
@@ -20,26 +26,59 @@ prefixTree::prefixTree(std::string filename) {
 
 }
 
-
+void prefixTree::destructorHelper(std::shared_ptr<treeNode>& nodePtr) {
+	if (nodePtr != nullptr) {
+		destructorHelper(nodePtr->getLeftChildPtr());
+		destructorHelper(nodePtr->getRightChildPtr());
+	}
+}
 
 prefixTree::~prefixTree()
 {
 	
 }
 
+// returns a pointer to where the new node should b insterted
+std::shared_ptr<treeNode> prefixTree::findInsertion(std::string netId, std::shared_ptr<treeNode> &nodePtr) {
+	if (netId == "") return nodePtr;
 
+	if (nodePtr->isLeaf()) {
+		return nodePtr;
+	}
+
+	// need these values for various purposes (making the next lines neater)
+	std::size_t thisIdLength = nodePtr->getNetId().length();
+	std::size_t newIdLength = netId.length();
+	std::size_t leftIdLength = nodePtr->getLeftChildPtr()->getNetId().length();
+	std::size_t rightIdLength = nodePtr->getLeftChildPtr()->getNetId().length();
+
+	if (netId[thisIdLength] == '0') {
+		if (newIdLength < leftIdLength) {
+			return nodePtr;
+		}
+		else findInsertion(netId, nodePtr->getLeftChildPtr());
+	}
+
+	if (netId[thisIdLength] == '1') {
+		if (newIdLength < rightIdLength) {
+			return nodePtr;
+		}
+		else findInsertion(netId, nodePtr->getRightChildPtr());
+	}
+	
+}
 
 
 
 
 bool prefixTree::add(const std::string netid, const int port) {
-	if (this->rootPtr == nullptr) {
+	/*if (this->rootPtr == nullptr) {
 		rootPtr = std::make_shared<treeNode>(netid, port);
 		return true;
 	}
 	else {
 		
-	}
+	}*/
 	
 	return false;
 }

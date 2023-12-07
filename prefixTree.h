@@ -1,3 +1,10 @@
+///////////////////////////////////////////////////////
+// ECE 3514, Project 4, Josh Dunn
+//
+// File name: prefixTree.h
+// Description: This file defines the prefixTree class and its member functions
+// Date: 12/6/2023
+//
 
 #ifndef PREFIX_TREE_
 #define PREFIX_TREE_
@@ -39,9 +46,13 @@ protected:
    int getHeightHelper(std::shared_ptr<treeNode> subTreePtr) const;
    
    int getNumberOfNodesHelper(std::shared_ptr<treeNode> subTreePtr) const;
+
+   std::shared_ptr<treeNode> findInsertion(std::string netId, std::shared_ptr<treeNode> &next);
+
+   void destructorHelper(std::shared_ptr<treeNode>& nodePtr);
  
    
-  std::string postorderTraverseHelper(std::string visit(std::shared_ptr<treeNode> NodePtr), std::shared_ptr<treeNode> treePtr) const;
+   std::string postorderTraverseHelper(std::string visit(std::shared_ptr<treeNode> NodePtr), std::shared_ptr<treeNode> treePtr) const;
 
    
 public:

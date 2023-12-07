@@ -1,3 +1,11 @@
+///////////////////////////////////////////////////////
+// ECE 3514, Project 4, Josh Dunn
+//
+// File name: hw4_datarecord.cpp
+// Description: This file implements prefixTree class member functions
+// Date: 12/6/2023
+//
+
 #include "hw4_datarecord.h"
 #include <string>
 
