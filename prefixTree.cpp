@@ -39,7 +39,7 @@ prefixTree::~prefixTree()
 }
 
 // returns a pointer to where the new node should b insterted
-std::shared_ptr<treeNode> prefixTree::findInsertion(std::string netId, std::shared_ptr<treeNode> &nodePtr) {
+std::shared_ptr<treeNode> prefixTree::findInsertion(std::string netId, std::shared_ptr<treeNode> nodePtr) {
 	if (netId == "") return nodePtr;
 
 	if (nodePtr->isLeaf()) {
