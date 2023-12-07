@@ -77,14 +77,24 @@ std::shared_ptr<treeNode> prefixTree::findInsertion(std::string netId, std::shar
 
 
 bool prefixTree::add(const std::string netid, const int port) {
-	/*if (this->rootPtr == nullptr) {
-		rootPtr = std::make_shared<treeNode>(netid, port);
+	// Use findInsertion to locate the position for the new node
+	std::shared_ptr<treeNode> insertionPoint = findInsertion(netid, rootPtr);
+
+	// Create a new node with the provided netid and port
+	std::shared_ptr<treeNode> newNode = std::make_shared<treeNode>(netid, port);
+
+	// Attach the new node to the appropriate position in the tree
+	if (insertionPoint) {
+		if (netid[insertionPoint->getNetId().length()] == '0') {
+			insertionPoint->setLeftChildPtr(newNode);
+		}
+		else {
+			insertionPoint->setRightChildPtr(newNode);
+		}
+
 		return true;
 	}
-	else {
-		
-	}*/
-	
+
 	return false;
 }
 
@@ -92,7 +102,6 @@ int prefixTree::findPort(std::string ipaddr) const
 {
 
 	return -1;
-	
 }
 
 
