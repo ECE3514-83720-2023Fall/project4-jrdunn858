@@ -47,10 +47,9 @@ protected:
    
    int getNumberOfNodesHelper(std::shared_ptr<treeNode> subTreePtr) const;
 
-   std::shared_ptr<treeNode> findInsertion(std::string netId, std::shared_ptr<treeNode> next);
-
    void destructorHelper(std::shared_ptr<treeNode> nodePtr);
- 
+
+   bool recursiveAdd(std::shared_ptr<treeNode> nodePtr, std::string netId, int port);
    
    std::string postorderTraverseHelper(std::string visit(std::shared_ptr<treeNode> NodePtr), std::shared_ptr<treeNode> treePtr) const;
 

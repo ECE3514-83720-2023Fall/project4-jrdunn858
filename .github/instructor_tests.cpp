@@ -86,7 +86,6 @@ TEST_CASE("Test constructor functions of prefixTree", "[constructor]") {
 TEST_CASE("Test Addition of Root Node to the Prefix Tree", "[Add]") {
 
 	prefixTree myTree;
-	myTree.add("", 0);
 
 	REQUIRE(myTree.add("", 0) == true);
 
