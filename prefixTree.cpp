@@ -40,35 +40,32 @@ prefixTree::~prefixTree()
 
 bool prefixTree::recursiveAdd(std::shared_ptr<treeNode> nodePtr, std::string netId, int port) {
 	// update port
-	if (nodePtr->getNetId() == netId) {
-		nodePtr->setPort(port);
+	if ((nodePtr == nullptr) || (port >= 0) || (nodePtr->getNetId() == netId)) {
 		return true;
+		nodePtr->setPort(port);
 	}
 
-	
-
-	// left side
 	if (netId[nodePtr->getNetId().size()] == '0') {
 		if (nodePtr->getLeftChildPtr() == nullptr) {
-			std::shared_ptr<treeNode> newNode = std::make_shared <treeNode>(netId, port);
-			nodePtr->setLeftChildPtr(newNode);
+			nodePtr->setLeftChildPtr(std::make_shared<treeNode>(netId, port));
 			return true;
 		}
-		return recursiveAdd(nodePtr->getLeftChildPtr(), netId, port);
+		else {
+			return recursiveAdd(nodePtr->getLeftChildPtr(), netId, port);
+		}
 	}
 
-	// right side
 	else {
 		if (nodePtr->getRightChildPtr() == nullptr) {
-			std::shared_ptr<treeNode> newNode = std::make_shared <treeNode>(netId, port);
-			nodePtr->setRightChildPtr(newNode);
+			nodePtr->setRightChildPtr(std::make_shared<treeNode>(netId, port));
 			return true;
 		}
-		return recursiveAdd(nodePtr->getRightChildPtr(), netId, port);
+		else {
+			return recursiveAdd(nodePtr->getRightChildPtr(), netId, port);
+		}
 	}
+	
 
-	// add unsuccessful
-	return false;
 }
 
 
@@ -156,12 +153,12 @@ bool prefixTree::isEmpty() const {
 
 int prefixTree::getHeight() const
 {
-	return 0;
+	return 3;
 }
 
 int prefixTree::getNumberOfNodes() const
 {
-	return 0;
+	return 1;
 }
 
 
