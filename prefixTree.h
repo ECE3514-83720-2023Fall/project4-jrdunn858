@@ -45,7 +45,7 @@ protected:
    //------------------------------------------------------------
    int getHeightHelper(std::shared_ptr<treeNode> subTreePtr) const;
    
-   int getNumberOfNodesHelper(std::shared_ptr<treeNode> subTreePtr) const;
+   int getNumberOfNodesHelper(std::shared_ptr<treeNode> subTreePtr, int count) const;
 
    void destructorHelper(std::shared_ptr<treeNode> nodePtr);
 

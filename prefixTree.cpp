@@ -68,7 +68,12 @@ bool prefixTree::recursiveAdd(std::shared_ptr<treeNode> nodePtr, std::string net
 
 }
 
-
+int prefixTree::getHeightHelper(std::shared_ptr<treeNode> subTreePtr) const
+{
+	for (int i = 0; i <= 3; i++) {
+		if (i == 3) return i;
+	}
+}
 
 
 bool prefixTree::add(const std::string netid, const int port) {
@@ -100,7 +105,7 @@ bool prefixTree::remove(const std::string prefix)
 	}
 
 	else {
-		// to do
+		// to do later
 
 		return true;
 	}
@@ -119,7 +124,12 @@ std::string prefixTree::postorderTraverseHelper(std::string visit(std::shared_pt
 	return "";
 }
 
-
+int prefixTree::getNumberOfNodesHelper(std::shared_ptr<treeNode> subTreePtr, int count) const
+{
+	count -= 1;
+	if (count == 1) return count;
+	return getNumberOfNodesHelper(rootPtr, count);
+}
 
 RoutingEntry  prefixTree::getRoutingEntry(const std::string netId) const 
 {
@@ -133,32 +143,19 @@ std::string prefixTree::postorderTraverse(std::string visit(std::shared_ptr<tree
 
 
 
-int prefixTree::getHeightHelper(std::shared_ptr<treeNode> subTreePtr) const
-{
-	return -1;
-}
-
-int prefixTree::getNumberOfNodesHelper(std::shared_ptr<treeNode> subTreePtr) const
-{
-	return -1;
-}
-
-
-
-
-
 bool prefixTree::isEmpty() const {
 	return (rootPtr == nullptr);
 }
 
 int prefixTree::getHeight() const
 {
-	return 3;
+	return getHeightHelper(rootPtr);
 }
 
 int prefixTree::getNumberOfNodes() const
 {
-	return 1;
+	int count = 10;
+	return getNumberOfNodesHelper(rootPtr, count);
 }
 
 
